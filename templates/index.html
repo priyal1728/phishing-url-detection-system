@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Phishing URL Detection System</h1>
+            <p>Educational cybersecurity tool for URL risk assessment</p>
+        </header>
+
+        <nav class="nav">
+            <a href="/">Scan URL</a>
+            <a href="/history">History</a>
+        </nav>
+
+        <div class="card">
+            <h2>Check a suspicious link</h2>
+            <form method="POST" action="/">
+                <label for="url">Enter URL</label>
+                <input type="text" id="url" name="url" placeholder="https://example.com" required>
+                <button type="submit">Analyze URL</button>
+            </form>
+
+            {% if error %}
+                <div class="error-box">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="info-box">
+            <h3>Warning signs</h3>
+            <ul>
+                <li>Missing HTTPS</li>
+                <li>IP-based hostname</li>
+                <li>Suspicious keywords such as login, verify, bank</li>
+                <li>URL shorteners and unusual domain structures</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
